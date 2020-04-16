@@ -1,0 +1,32 @@
+forecast {
+  border: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+location {
+  border: black;
+  border-style: black;
+  border-width: 1px;
+}
+
+fiveday {
+  border: black;
+  border-style: black;
+  border-width: 1px;
+}
+
+.city {
+}
+
+.temp {
+}
+
+.wind {
+}
+
+.humidity {
+}
+
+#searchBtn {
+}

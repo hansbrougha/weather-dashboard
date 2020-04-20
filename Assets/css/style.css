@@ -1,19 +1,23 @@
-forecast {
+.forecast {
   border: black;
   border-style: solid;
   border-width: 1px;
 }
 
-location {
+.location {
+  border: black;
+  border-style: black;
+  border-width: 1px;
+  width: 20%;
+}
+
+.fiveday {
   border: black;
   border-style: black;
   border-width: 1px;
 }
 
-fiveday {
-  border: black;
-  border-style: black;
-  border-width: 1px;
+.container {
 }
 
 .city {

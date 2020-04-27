@@ -1,36 +1,34 @@
-.forecast {
-  border: black;
-  border-style: solid;
-  border-width: 1px;
+.col-4 {
+  border: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 5px;
+  width: 30%;
+  height: 350px;
+  margin: 5px;
 }
 
-.location {
-  border: black;
-  border-style: black;
-  border-width: 1px;
-  width: 20%;
+.col-6 {
+  border: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 5px;
+  width: 70%;
+  height: 350px;
+  margin: 5px;
 }
 
-.fiveday {
-  border: black;
-  border-style: black;
-  border-width: 1px;
+.col-10 {
+  border: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 5px;
+  width: 90%;
+  height: 250px;
+  margin: 5px;
 }
 
 .container {
-}
-
-.city {
-}
-
-.temp {
-}
-
-.wind {
-}
-
-.humidity {
-}
-
-#searchBtn {
+  margin: 0 auto;
+  align-items: center;
 }

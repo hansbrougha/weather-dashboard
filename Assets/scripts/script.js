@@ -24,14 +24,13 @@ $.ajax({
     $(".wind").text("Wind Speed: " + response.wind.speed);
     $(".humidity").text("Humidity: " + response.main.humidity);
     //Log Data in Console
-    console.log(response.name);
-    console.log(response.dt);
-    console.log(response.main.temp);
-    console.log(response.main.humidity);
-    console.log(response.wind.speed);
-    console.log(response.weather[0].main);
-    console.log(response.coord.lon);
-    console.log(response.coord.lat);
+    console.log("city: ", response.name);
+    console.log("temp: ", response.main.temp);
+    console.log("humidity: ", response.main.humidity);
+    console.log("wind speed: ", response.wind.speed);
+    console.log("conditions: ", response.weather[0].main);
+    console.log("longitude: ", response.coord.lon);
+    console.log("latitude: ", response.coord.lat);
   });
 
 var APIKey = "857c3a0a6b4e70819e79df943dea660d";

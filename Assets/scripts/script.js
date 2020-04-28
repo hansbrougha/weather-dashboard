@@ -1,28 +1,45 @@
-console.log("test");
-// This is our API key
-var APIKey = "857c3a0a6b4e70819e79df943dea660d";
+moment().format("L");
+console.log(moment().format("L"));
+var cities = [];
+console.log(cities);
+var city = "";
 
-// Here we are building the URL we need to query the database
-var queryURL =
-  "https://api.openweathermap.org/data/2.5/weather?" +
-  "q=Kansas+City&units=imperial&appid=" +
-  APIKey;
-
-$.ajax({
-  url: queryURL,
-  method: "GET",
-})
-  // Store all retrieved data in response
-  .then(function (response) {
-    // Log the queryURL
-    console.log(queryURL);
-    // Log the resulting object
+function getCityInfo(city) {
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&units=imperial&appid=857c3a0a6b4e70819e79df943dea660d";
+  var forecastURL =
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    city +
+    "&appid=857c3a0a6b4e70819e79df943dea660d";
+  ////////////////////////////////////////////////////
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
     console.log(response);
+    console.log(queryURL);
+    console.log(forecastURL);
+    $("#current").empty();
+
     //Transfer Content to HTML
-    $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-    $(".temp").text("Temperature (F) " + response.main.temp);
-    $(".wind").text("Wind Speed: " + response.wind.speed);
-    $(".humidity").text("Humidity: " + response.main.humidity);
+    var currentDate = moment().format("L");
+    var cityEl = $("<h2>").text(response.name);
+    var currentDateEl = cityEl.append("" + currentDate);
+    var tempEl = $("<p>").text("Temp: " + response.main.temp);
+    var humidityEl = $("<p>").text("Humidity: " + response.main.humidity);
+    var windEl = $("<p>").text("Wind Speed: " + response.wind.speed);
+    var currentWeather = response.weather[0].main;
+    //if statements for currentWeather icon
+    var newDiv = $("<div>");
+    newDiv.append(currentDateEl, tempEl, humidityEl, windEl);
+    $("#current").html(newDiv);
+
+    //$(".city").html("<h1>" + response.name + "</h1>");
+    //$(".temp").text("Temperature: " + response.main.temp + //" °F");
+    //$(".wind").text("Wind Speed: " + response.wind.speed + //" MPH");
+    //$(".humidity").text("Humidity: " + response.main.//humidity + " %");
     //Log Data in Console
     console.log("city: ", response.name);
     console.log("temp: ", response.main.temp);
@@ -32,42 +49,37 @@ $.ajax({
     console.log("longitude: ", response.coord.lon);
     console.log("latitude: ", response.coord.lat);
   });
-
-var APIKey = "857c3a0a6b4e70819e79df943dea660d";
-var queryURL =
-  "https://api.openweathermap.org/data/2.5/forecast?" +
-  "q=Kansas+City&appid=" +
-  APIKey;
-
-$.ajax({
-  url: queryURL,
-  method: "GET",
-}).then(function (response) {
-  // Log the queryURL
-  console.log(queryURL);
-  // Log the resulting object
-  console.log(response.list);
-  console.log(response.list[5].dt_txt);
-  console.log(response.list[5].weather[0].id);
-  console.log(response.list[5].main.temp);
-  console.log(response.list[5].main.humidity);
-  console.log(response.list[13].dt_txt);
-  console.log(response.list[13].weather[0].id);
-  console.log(response.list[13].main.temp);
-  console.log(response.list[13].main.humidity);
-  console.log(response.list[21].dt_txt);
-  console.log(response.list[21].weather[0].id);
-  console.log(response.list[21].main.temp);
-  console.log(response.list[21].main.humidity);
-  console.log(response.list[29].dt_txt);
-  console.log(response.list[29].weather[0].id);
-  console.log(response.list[29].main.temp);
-  console.log(response.list[29].main.humidity);
-  console.log(response.list[37].dt_txt);
-  console.log(response.list[37].weather[0].id);
-  console.log(response.list[37].main.temp);
-  console.log(response.list[37].main.humidity);
-});
+  ///////////////////////////////////////////////////////////
+  $.ajax({
+    url: forecastURL,
+    method: "GET",
+  }).then(function (response) {
+    // Log the queryURL
+    console.log(response);
+    // Log the resulting objects
+    console.log(response.list);
+    console.log(response.list[5].dt_txt);
+    console.log(response.list[5].weather[0].id);
+    console.log(response.list[5].main.temp);
+    console.log(response.list[5].main.humidity);
+    console.log(response.list[13].dt_txt);
+    console.log(response.list[13].weather[0].id);
+    console.log(response.list[13].main.temp);
+    console.log(response.list[13].main.humidity);
+    console.log(response.list[21].dt_txt);
+    console.log(response.list[21].weather[0].id);
+    console.log(response.list[21].main.temp);
+    console.log(response.list[21].main.humidity);
+    console.log(response.list[29].dt_txt);
+    console.log(response.list[29].weather[0].id);
+    console.log(response.list[29].main.temp);
+    console.log(response.list[29].main.humidity);
+    console.log(response.list[37].dt_txt);
+    console.log(response.list[37].weather[0].id);
+    console.log(response.list[37].main.temp);
+    console.log(response.list[37].main.humidity);
+  });
+}
 
 //UV Index Bad Request. Make sure You Do this last, after everything else work.
 //var APIKey = "857c3a0a6b4e70819e79df943dea660d";
@@ -91,19 +103,42 @@ $.ajax({
 
 //You will need separate ajax calls for 5 day forecast and the current forecast and UV Index (three ajax). But how are these going to be laid out. List them all at the top and then run the AJAX calls or run them in order.
 
-//Use Bujumbura activity!!!!!!!!!!
-
-//And also NYTimes activity.
-
 //New cities are added to list when searched and will be displayed in search history.
 
 //Run AJAX call to the OpenWeatherMap API
 //Search Button On click Function
 
-$("#searchBtn").on("click", function (event) {
+// Function for displaying city data
+function renderButtons() {
+  $("#buttons-view").empty();
+  for (var i = 0; i < cities.length; i++) {
+    var a = $("<button>");
+    a.addClass("city-btn btn btn-primary btn-lg btn-block");
+    a.attr("data-name", cities[i]);
+    a.text(cities[i]);
+    $("buttons-view").append(a);
+  }
+}
+
+//Search Button On click Function
+$("#add-city").on("click", function (event) {
   event.preventDefault();
-  $("input").val();
+  var city = $("input").val();
+  cities.push(city);
   console.log($("input").val());
-  //search through class activities, omdb app.
   console.log(event);
+  renderButtons();
 });
+
+$(document).on("click", ".city-btn", getCityInfo);
+renderButtons();
+
+//var city = $(this).attr("data-name");
+
+//console.log("test");
+//moment().format("L");
+//console.log(moment().format("L"));
+//var cities = [];
+//console.log(cities);
+//var location = "";
+//console.log(location);

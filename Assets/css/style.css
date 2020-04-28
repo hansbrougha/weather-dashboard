@@ -26,6 +26,7 @@ body {
   width: 70%;
   height: 350px;
   margin: 5px;
+  padding: 5px;
 }
 
 .col-10 {
@@ -54,19 +55,21 @@ body {
   align-items: center;
 }
 
-#searchBtn {
+#add-city {
   width: 50px;
 }
 
 .city {
-  font-size: 10px;
 }
 
 .wind {
+  font-size: 25px;
 }
 
 .humidity {
+  font-size: 25px;
 }
 
 .temp {
+  font-size: 25px;
 }

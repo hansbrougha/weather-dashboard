@@ -11,23 +11,30 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="Assets/css/style.css" />
+
     <title>Weather Dashboard</title>
   </head>
   <body>
+    <!--Navigation Header-->
     <nav class="navbar navbar-light bg-dark">
       <h1 class="navbar-brand text-light mx-auto">WEATHER DASHBOARD</h1>
     </nav>
+    <!--Page Container-->
     <div class="container">
       <div class="row">
         <div class="col-4">
+          <!--Search Input-->
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" />
             <div class="input-group-append">
-              <button id="searchBtn" class="btn btn-secondary" type="button">
+              <!--Search Button-->
+              <button id="add-city" class="btn btn-secondary" type="button">
                 <i class="fa fa-search"></i>
               </button>
             </div>
           </div>
+          <section id="buttons-view"></section>
+          <!--Buttons Should Appear Here-->
           <button type="button" class="btn btn-primary btn-lg btn-block">
             Kansas City, MO
           </button>
@@ -37,21 +44,17 @@
           <button type="button" class="btn btn-primary btn-lg btn-block">
             New York, NY
           </button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">
-            Los Angeles, CA
-          </button>
-          <button type="button" class="btn btn-primary btn-lg btn-block">
-            Orlando, FL
-          </button>
         </div>
-
+        <!--Current Weather Conditions-->
         <div class="col-6">
-          <p class="col city"></p>
+          <div id="current"></div>
+          <!--<p class="col city"></p>
           <p class="col wind"></p>
           <p class="col humidity"></p>
-          <p class="col temp"></p>
+          <p class="col temp"></p>-->
         </div>
       </div>
+      <!--Five Day Forecast Row-->
       <div class="row">
         <div class="col-10">
           <div class="row">
@@ -64,6 +67,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="Assets/scripts/script.js"></script>
   </body>

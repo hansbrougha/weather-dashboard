@@ -13,7 +13,7 @@ function getCityInfo(city) {
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
     "&appid=857c3a0a6b4e70819e79df943dea660d";
-  ////////////////////////////////////////////////////
+  /////////////////////////CURRENT WEATHER///////////////////////////
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -49,7 +49,27 @@ function getCityInfo(city) {
     console.log("longitude: ", response.coord.lon);
     console.log("latitude: ", response.coord.lat);
   });
-  ///////////////////////////////////////////////////////////
+  ///////////////////////////UV INDEX////////////////////////////////
+
+  var lat = response.coord.lat;
+  var lon = response.coord.lon;
+  var uvURL =
+    "http://api.openweathermap.org/data/2.5/uvi?appid=857c3a0a6b4e70819e79df943dea660d" +
+    "&lat=" +
+    lat +
+    "&lon=" +
+    lon;
+
+  $.ajax({
+    url: uvURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    $("#uv-index") = response.value;
+    var uvEl = $("<p>").text("UV Index: " + response.value);
+    $("uv-index").html(uvEl);
+  });
+  //////////////////////FIVE DAY FORECAST/////////////////////////////////////
   $.ajax({
     url: forecastURL,
     method: "GET",
@@ -80,20 +100,6 @@ function getCityInfo(city) {
     console.log(response.list[37].main.humidity);
   });
 }
-
-//UV Index Bad Request. Make sure You Do this last, after everything else work.
-//var APIKey = "857c3a0a6b4e70819e79df943dea660d";
-//var uvURL =
-//  "http://api.openweathermap.org/data/2.5/uvi?appid=" +
-//  APIKey +
-//  "&lat={lat}&lon={lon}";
-//
-//$.ajax({
-//  url: uvURL,
-//  method: "GET",
-//}).then(function (response) {
-//  console.log(response);
-//});
 
 //Capture form input: Add new city with button, get current and future forecasts. Establish form input first.
 

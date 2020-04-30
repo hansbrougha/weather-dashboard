@@ -25,7 +25,12 @@
         <div class="col-4">
           <!--Search Input-->
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" />
+            <input
+              id="input"
+              type="text"
+              class="form-control"
+              placeholder="Search"
+            />
             <div class="input-group-append">
               <!--Search Button-->
               <button id="add-city" class="btn btn-secondary" type="button">
@@ -46,8 +51,8 @@
           </button>
         </div>
         <!--Current Weather Conditions-->
-        <div class="col-6">
-          <div id="current"></div>
+        <div class="col-6 current">
+          <div id="uv-index"></div>
           <!--<p class="col city"></p>
           <p class="col wind"></p>
           <p class="col humidity"></p>
